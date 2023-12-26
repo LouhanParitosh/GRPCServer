@@ -25,20 +25,20 @@ namespace ProductClient {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRQcm90b3MvcHJvZHVjdC5wcm90bxobZ29vZ2xlL3Byb3RvYnVmL2VtcHR5",
-            "LnByb3RvIlQKDE9yZGVyUmVxdWVzdBIRCglwcm9kdWN0SWQYASABKAkSDQoF",
-            "Y29sb3IYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkSDQoFcHJpY2UYBCAB",
-            "KAEiMAoNT3JkZXJSZXNwb25zZRIPCgdvcmRlcklkGAEgASgJEg4KBnN0YXR1",
-            "cxgCIAEoCSIvCgRJdGVtEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSDQoF",
-            "cHJpY2UYAyABKAEiIwoLTGlzdE9mSXRlbXMSFAoFaXRlbXMYASADKAsyBS5J",
-            "dGVtMqcBCgxPcmRlclNlcnZpY2USKwoKUGxhY2VPcmRlchINLk9yZGVyUmVx",
-            "dWVzdBoOLk9yZGVyUmVzcG9uc2USLAoLVXBkYXRlT3JkZXISDS5PcmRlclJl",
-            "cXVlc3QaDi5PcmRlclJlc3BvbnNlEjwKFEdldEFsbEF2YWlsYWJsZUl0ZW1z",
-            "EhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5GgwuTGlzdE9mSXRlbXNCEKoCDVBy",
-            "b2R1Y3RDbGllbnRiBnByb3RvMw=="));
+            "LnByb3RvIk8KDE9yZGVyUmVxdWVzdBIRCglwcm9kdWN0SWQYASABKAkSDAoE",
+            "bmFtZRgCIAEoCRINCgVwcmljZRgDIAEoARIPCgdvcmRlcklkGAQgASgJIjAK",
+            "DU9yZGVyUmVzcG9uc2USDwoHb3JkZXJJZBgBIAEoCRIOCgZzdGF0dXMYAiAB",
+            "KAkiLwoESXRlbRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEg0KBXByaWNl",
+            "GAMgASgBIiMKC0xpc3RPZkl0ZW1zEhQKBWl0ZW1zGAEgAygLMgUuSXRlbTKn",
+            "AQoMT3JkZXJTZXJ2aWNlEisKClBsYWNlT3JkZXISDS5PcmRlclJlcXVlc3Qa",
+            "Di5PcmRlclJlc3BvbnNlEiwKC1VwZGF0ZU9yZGVyEg0uT3JkZXJSZXF1ZXN0",
+            "Gg4uT3JkZXJSZXNwb25zZRI8ChRHZXRBbGxBdmFpbGFibGVJdGVtcxIWLmdv",
+            "b2dsZS5wcm90b2J1Zi5FbXB0eRoMLkxpc3RPZkl0ZW1zQhCqAg1Qcm9kdWN0",
+            "Q2xpZW50YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProductClient.OrderRequest), global::ProductClient.OrderRequest.Parser, new[]{ "ProductId", "Color", "Description", "Price" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProductClient.OrderRequest), global::ProductClient.OrderRequest.Parser, new[]{ "ProductId", "Name", "Price", "OrderId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProductClient.OrderResponse), global::ProductClient.OrderResponse.Parser, new[]{ "OrderId", "Status" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProductClient.Item), global::ProductClient.Item.Parser, new[]{ "Id", "Name", "Price" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProductClient.ListOfItems), global::ProductClient.ListOfItems.Parser, new[]{ "Items" }, null, null, null, null)
@@ -84,9 +84,9 @@ namespace ProductClient {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OrderRequest(OrderRequest other) : this() {
       productId_ = other.productId_;
-      color_ = other.color_;
-      description_ = other.description_;
+      name_ = other.name_;
       price_ = other.price_;
+      orderId_ = other.orderId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -108,32 +108,20 @@ namespace ProductClient {
       }
     }
 
-    /// <summary>Field number for the "color" field.</summary>
-    public const int ColorFieldNumber = 2;
-    private string color_ = "";
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Color {
-      get { return color_; }
+    public string Name {
+      get { return name_; }
       set {
-        color_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "description" field.</summary>
-    public const int DescriptionFieldNumber = 3;
-    private string description_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Description {
-      get { return description_; }
-      set {
-        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "price" field.</summary>
-    public const int PriceFieldNumber = 4;
+    public const int PriceFieldNumber = 3;
     private double price_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -141,6 +129,18 @@ namespace ProductClient {
       get { return price_; }
       set {
         price_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "orderId" field.</summary>
+    public const int OrderIdFieldNumber = 4;
+    private string orderId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string OrderId {
+      get { return orderId_; }
+      set {
+        orderId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -160,9 +160,9 @@ namespace ProductClient {
         return true;
       }
       if (ProductId != other.ProductId) return false;
-      if (Color != other.Color) return false;
-      if (Description != other.Description) return false;
+      if (Name != other.Name) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Price, other.Price)) return false;
+      if (OrderId != other.OrderId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -171,9 +171,9 @@ namespace ProductClient {
     public override int GetHashCode() {
       int hash = 1;
       if (ProductId.Length != 0) hash ^= ProductId.GetHashCode();
-      if (Color.Length != 0) hash ^= Color.GetHashCode();
-      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Price != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Price);
+      if (OrderId.Length != 0) hash ^= OrderId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -196,17 +196,17 @@ namespace ProductClient {
         output.WriteRawTag(10);
         output.WriteString(ProductId);
       }
-      if (Color.Length != 0) {
+      if (Name.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(Color);
-      }
-      if (Description.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Description);
+        output.WriteString(Name);
       }
       if (Price != 0D) {
-        output.WriteRawTag(33);
+        output.WriteRawTag(25);
         output.WriteDouble(Price);
+      }
+      if (OrderId.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(OrderId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -222,17 +222,17 @@ namespace ProductClient {
         output.WriteRawTag(10);
         output.WriteString(ProductId);
       }
-      if (Color.Length != 0) {
+      if (Name.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(Color);
-      }
-      if (Description.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Description);
+        output.WriteString(Name);
       }
       if (Price != 0D) {
-        output.WriteRawTag(33);
+        output.WriteRawTag(25);
         output.WriteDouble(Price);
+      }
+      if (OrderId.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(OrderId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -247,14 +247,14 @@ namespace ProductClient {
       if (ProductId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ProductId);
       }
-      if (Color.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Color);
-      }
-      if (Description.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
       if (Price != 0D) {
         size += 1 + 8;
+      }
+      if (OrderId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(OrderId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -271,14 +271,14 @@ namespace ProductClient {
       if (other.ProductId.Length != 0) {
         ProductId = other.ProductId;
       }
-      if (other.Color.Length != 0) {
-        Color = other.Color;
-      }
-      if (other.Description.Length != 0) {
-        Description = other.Description;
+      if (other.Name.Length != 0) {
+        Name = other.Name;
       }
       if (other.Price != 0D) {
         Price = other.Price;
+      }
+      if (other.OrderId.Length != 0) {
+        OrderId = other.OrderId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -300,15 +300,15 @@ namespace ProductClient {
             break;
           }
           case 18: {
-            Color = input.ReadString();
+            Name = input.ReadString();
             break;
           }
-          case 26: {
-            Description = input.ReadString();
-            break;
-          }
-          case 33: {
+          case 25: {
             Price = input.ReadDouble();
+            break;
+          }
+          case 34: {
+            OrderId = input.ReadString();
             break;
           }
         }
@@ -331,15 +331,15 @@ namespace ProductClient {
             break;
           }
           case 18: {
-            Color = input.ReadString();
+            Name = input.ReadString();
             break;
           }
-          case 26: {
-            Description = input.ReadString();
-            break;
-          }
-          case 33: {
+          case 25: {
             Price = input.ReadDouble();
+            break;
+          }
+          case 34: {
+            OrderId = input.ReadString();
             break;
           }
         }

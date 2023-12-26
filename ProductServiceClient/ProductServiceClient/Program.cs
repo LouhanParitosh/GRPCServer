@@ -26,13 +26,13 @@ class ProductClient
             {
                 ProductId = userResponse
             };
-            OrderResponse response = await client.PlaceOrderAsync(placeorderrequest);
-            Console.Write(response.ToString());
+            OrderResponse placeOrderResponse = await client.PlaceOrderAsync(placeorderrequest);
+            Console.Write(placeOrderResponse.ToString());
             Console.ReadLine();
 
 
             //Providing user option to update/Cancel the order
-            Console.WriteLine("What do you want to do with this order?" + $"Order ID: {response.OrderId}");
+            Console.WriteLine("What do you want to do with this order?" + $"Order ID: {placeOrderResponse.OrderId}");
             Console.WriteLine("1. Cancel Order");
             Console.WriteLine("2. Edit Order");
 
@@ -50,7 +50,14 @@ class ProductClient
 
             } while (userChoice != 1 && userChoice != 2);
 
-            OrderResponse updateOrderResponse = await client.UpdateOrderAsync(placeorderrequest);
+            var updateorderrequest = new OrderRequest()
+            {
+                ProductId = userChoice.ToString(),
+                OrderId = placeOrderResponse.OrderId
+            };
+
+
+            OrderResponse updateOrderResponse = await client.UpdateOrderAsync(updateorderrequest);
             Console.WriteLine(updateOrderResponse.ToString());
             Console.ReadLine();
 

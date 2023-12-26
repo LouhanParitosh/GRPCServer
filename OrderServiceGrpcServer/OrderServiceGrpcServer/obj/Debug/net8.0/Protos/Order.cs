@@ -25,20 +25,20 @@ namespace OrderServiceGrpcServer {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJQcm90b3Mvb3JkZXIucHJvdG8aG2dvb2dsZS9wcm90b2J1Zi9lbXB0eS5w",
-            "cm90byJUCgxPcmRlclJlcXVlc3QSEQoJcHJvZHVjdElkGAEgASgJEg0KBWNv",
-            "bG9yGAIgASgJEhMKC2Rlc2NyaXB0aW9uGAMgASgJEg0KBXByaWNlGAQgASgB",
-            "IjAKDU9yZGVyUmVzcG9uc2USDwoHb3JkZXJJZBgBIAEoCRIOCgZzdGF0dXMY",
-            "AiABKAkiLwoESXRlbRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEg0KBXBy",
-            "aWNlGAMgASgBIiMKC0xpc3RPZkl0ZW1zEhQKBWl0ZW1zGAEgAygLMgUuSXRl",
-            "bTKnAQoMT3JkZXJTZXJ2aWNlEisKClBsYWNlT3JkZXISDS5PcmRlclJlcXVl",
-            "c3QaDi5PcmRlclJlc3BvbnNlEiwKC1VwZGF0ZU9yZGVyEg0uT3JkZXJSZXF1",
-            "ZXN0Gg4uT3JkZXJSZXNwb25zZRI8ChRHZXRBbGxBdmFpbGFibGVJdGVtcxIW",
-            "Lmdvb2dsZS5wcm90b2J1Zi5FbXB0eRoMLkxpc3RPZkl0ZW1zQhmqAhZPcmRl",
-            "clNlcnZpY2VHcnBjU2VydmVyYgZwcm90bzM="));
+            "cm90byJPCgxPcmRlclJlcXVlc3QSEQoJcHJvZHVjdElkGAEgASgJEgwKBG5h",
+            "bWUYAiABKAkSDQoFcHJpY2UYAyABKAESDwoHb3JkZXJJZBgEIAEoCSIwCg1P",
+            "cmRlclJlc3BvbnNlEg8KB29yZGVySWQYASABKAkSDgoGc3RhdHVzGAIgASgJ",
+            "Ii8KBEl0ZW0SCgoCaWQYASABKAkSDAoEbmFtZRgCIAEoCRINCgVwcmljZRgD",
+            "IAEoASIjCgtMaXN0T2ZJdGVtcxIUCgVpdGVtcxgBIAMoCzIFLkl0ZW0ypwEK",
+            "DE9yZGVyU2VydmljZRIrCgpQbGFjZU9yZGVyEg0uT3JkZXJSZXF1ZXN0Gg4u",
+            "T3JkZXJSZXNwb25zZRIsCgtVcGRhdGVPcmRlchINLk9yZGVyUmVxdWVzdBoO",
+            "Lk9yZGVyUmVzcG9uc2USPAoUR2V0QWxsQXZhaWxhYmxlSXRlbXMSFi5nb29n",
+            "bGUucHJvdG9idWYuRW1wdHkaDC5MaXN0T2ZJdGVtc0IZqgIWT3JkZXJTZXJ2",
+            "aWNlR3JwY1NlcnZlcmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::OrderServiceGrpcServer.OrderRequest), global::OrderServiceGrpcServer.OrderRequest.Parser, new[]{ "ProductId", "Color", "Description", "Price" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::OrderServiceGrpcServer.OrderRequest), global::OrderServiceGrpcServer.OrderRequest.Parser, new[]{ "ProductId", "Name", "Price", "OrderId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::OrderServiceGrpcServer.OrderResponse), global::OrderServiceGrpcServer.OrderResponse.Parser, new[]{ "OrderId", "Status" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::OrderServiceGrpcServer.Item), global::OrderServiceGrpcServer.Item.Parser, new[]{ "Id", "Name", "Price" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::OrderServiceGrpcServer.ListOfItems), global::OrderServiceGrpcServer.ListOfItems.Parser, new[]{ "Items" }, null, null, null, null)
@@ -84,9 +84,9 @@ namespace OrderServiceGrpcServer {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OrderRequest(OrderRequest other) : this() {
       productId_ = other.productId_;
-      color_ = other.color_;
-      description_ = other.description_;
+      name_ = other.name_;
       price_ = other.price_;
+      orderId_ = other.orderId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -108,32 +108,20 @@ namespace OrderServiceGrpcServer {
       }
     }
 
-    /// <summary>Field number for the "color" field.</summary>
-    public const int ColorFieldNumber = 2;
-    private string color_ = "";
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Color {
-      get { return color_; }
+    public string Name {
+      get { return name_; }
       set {
-        color_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "description" field.</summary>
-    public const int DescriptionFieldNumber = 3;
-    private string description_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Description {
-      get { return description_; }
-      set {
-        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "price" field.</summary>
-    public const int PriceFieldNumber = 4;
+    public const int PriceFieldNumber = 3;
     private double price_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -141,6 +129,18 @@ namespace OrderServiceGrpcServer {
       get { return price_; }
       set {
         price_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "orderId" field.</summary>
+    public const int OrderIdFieldNumber = 4;
+    private string orderId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string OrderId {
+      get { return orderId_; }
+      set {
+        orderId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -160,9 +160,9 @@ namespace OrderServiceGrpcServer {
         return true;
       }
       if (ProductId != other.ProductId) return false;
-      if (Color != other.Color) return false;
-      if (Description != other.Description) return false;
+      if (Name != other.Name) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Price, other.Price)) return false;
+      if (OrderId != other.OrderId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -171,9 +171,9 @@ namespace OrderServiceGrpcServer {
     public override int GetHashCode() {
       int hash = 1;
       if (ProductId.Length != 0) hash ^= ProductId.GetHashCode();
-      if (Color.Length != 0) hash ^= Color.GetHashCode();
-      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Price != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Price);
+      if (OrderId.Length != 0) hash ^= OrderId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -196,17 +196,17 @@ namespace OrderServiceGrpcServer {
         output.WriteRawTag(10);
         output.WriteString(ProductId);
       }
-      if (Color.Length != 0) {
+      if (Name.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(Color);
-      }
-      if (Description.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Description);
+        output.WriteString(Name);
       }
       if (Price != 0D) {
-        output.WriteRawTag(33);
+        output.WriteRawTag(25);
         output.WriteDouble(Price);
+      }
+      if (OrderId.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(OrderId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -222,17 +222,17 @@ namespace OrderServiceGrpcServer {
         output.WriteRawTag(10);
         output.WriteString(ProductId);
       }
-      if (Color.Length != 0) {
+      if (Name.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(Color);
-      }
-      if (Description.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Description);
+        output.WriteString(Name);
       }
       if (Price != 0D) {
-        output.WriteRawTag(33);
+        output.WriteRawTag(25);
         output.WriteDouble(Price);
+      }
+      if (OrderId.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(OrderId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -247,14 +247,14 @@ namespace OrderServiceGrpcServer {
       if (ProductId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ProductId);
       }
-      if (Color.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Color);
-      }
-      if (Description.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
       if (Price != 0D) {
         size += 1 + 8;
+      }
+      if (OrderId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(OrderId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -271,14 +271,14 @@ namespace OrderServiceGrpcServer {
       if (other.ProductId.Length != 0) {
         ProductId = other.ProductId;
       }
-      if (other.Color.Length != 0) {
-        Color = other.Color;
-      }
-      if (other.Description.Length != 0) {
-        Description = other.Description;
+      if (other.Name.Length != 0) {
+        Name = other.Name;
       }
       if (other.Price != 0D) {
         Price = other.Price;
+      }
+      if (other.OrderId.Length != 0) {
+        OrderId = other.OrderId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -300,15 +300,15 @@ namespace OrderServiceGrpcServer {
             break;
           }
           case 18: {
-            Color = input.ReadString();
+            Name = input.ReadString();
             break;
           }
-          case 26: {
-            Description = input.ReadString();
-            break;
-          }
-          case 33: {
+          case 25: {
             Price = input.ReadDouble();
+            break;
+          }
+          case 34: {
+            OrderId = input.ReadString();
             break;
           }
         }
@@ -331,15 +331,15 @@ namespace OrderServiceGrpcServer {
             break;
           }
           case 18: {
-            Color = input.ReadString();
+            Name = input.ReadString();
             break;
           }
-          case 26: {
-            Description = input.ReadString();
-            break;
-          }
-          case 33: {
+          case 25: {
             Price = input.ReadDouble();
+            break;
+          }
+          case 34: {
+            OrderId = input.ReadString();
             break;
           }
         }

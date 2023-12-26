@@ -26,8 +26,8 @@ namespace OrderServiceGrpcServer.Services
         {
             var response = new OrderResponse
             {
-                OrderId = request.ProductId,
-                Status = "Order Updated Successfully"
+                OrderId = request.OrderId,
+                Status = request.ProductId.Equals("1") ? "Order Cancelled Successfully" : "Order Updated Successfully"
             };
 
             return Task.FromResult(response);
