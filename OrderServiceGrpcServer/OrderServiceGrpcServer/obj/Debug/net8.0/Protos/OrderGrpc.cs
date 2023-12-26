@@ -49,6 +49,10 @@ namespace OrderServiceGrpcServer {
     static readonly grpc::Marshaller<global::OrderServiceGrpcServer.OrderRequest> __Marshaller_OrderRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::OrderServiceGrpcServer.OrderRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::OrderServiceGrpcServer.OrderResponse> __Marshaller_OrderResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::OrderServiceGrpcServer.OrderResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Google.Protobuf.WellKnownTypes.Empty.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::OrderServiceGrpcServer.ListOfItems> __Marshaller_ListOfItems = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::OrderServiceGrpcServer.ListOfItems.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::OrderServiceGrpcServer.OrderRequest, global::OrderServiceGrpcServer.OrderResponse> __Method_PlaceOrder = new grpc::Method<global::OrderServiceGrpcServer.OrderRequest, global::OrderServiceGrpcServer.OrderResponse>(
@@ -65,6 +69,14 @@ namespace OrderServiceGrpcServer {
         "UpdateOrder",
         __Marshaller_OrderRequest,
         __Marshaller_OrderResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::OrderServiceGrpcServer.ListOfItems> __Method_GetAllAvailableItems = new grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::OrderServiceGrpcServer.ListOfItems>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAllAvailableItems",
+        __Marshaller_google_protobuf_Empty,
+        __Marshaller_ListOfItems);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -88,6 +100,12 @@ namespace OrderServiceGrpcServer {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::OrderServiceGrpcServer.ListOfItems> GetAllAvailableItems(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -97,7 +115,8 @@ namespace OrderServiceGrpcServer {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_PlaceOrder, serviceImpl.PlaceOrder)
-          .AddMethod(__Method_UpdateOrder, serviceImpl.UpdateOrder).Build();
+          .AddMethod(__Method_UpdateOrder, serviceImpl.UpdateOrder)
+          .AddMethod(__Method_GetAllAvailableItems, serviceImpl.GetAllAvailableItems).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -109,6 +128,7 @@ namespace OrderServiceGrpcServer {
     {
       serviceBinder.AddMethod(__Method_PlaceOrder, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::OrderServiceGrpcServer.OrderRequest, global::OrderServiceGrpcServer.OrderResponse>(serviceImpl.PlaceOrder));
       serviceBinder.AddMethod(__Method_UpdateOrder, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::OrderServiceGrpcServer.OrderRequest, global::OrderServiceGrpcServer.OrderResponse>(serviceImpl.UpdateOrder));
+      serviceBinder.AddMethod(__Method_GetAllAvailableItems, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Protobuf.WellKnownTypes.Empty, global::OrderServiceGrpcServer.ListOfItems>(serviceImpl.GetAllAvailableItems));
     }
 
   }

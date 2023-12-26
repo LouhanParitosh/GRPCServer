@@ -1,4 +1,6 @@
 using Grpc.Net.Client;
+using Grpc.Net.Client;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client.Configuration;
 using Newtonsoft.Json.Linq;
 using System.Net;
@@ -13,22 +15,28 @@ class ProductClient
             using var channel = GrpcChannel.ForAddress("http://localhost:50051");
             var client = new OrderService.OrderServiceClient(channel);
 
-            JObject chosenProduct = ReadFromItemList();
+            // gRPC call to get all available items from Server
+            ListOfItems itemList = await client.GetAllAvailableItemsAsync(new Empty());
 
+            //Placing the selected order
+            var userResponse = RenderItemsAndBuyProduct(itemList);
+            Console.WriteLine($"You have selected Product with ID: {userResponse}. Going to Checkout and place order....");
+            Console.ReadLine();
             var placeorderrequest = new OrderRequest()
             {
-                ProductId = chosenProduct["id"].ToString()
+                ProductId = userResponse
             };
             OrderResponse response = await client.PlaceOrderAsync(placeorderrequest);
             Console.Write(response.ToString());
             Console.ReadLine();
 
+
+            //Providing user option to update/Cancel the order
             Console.WriteLine("What do you want to do with this order?" + $"Order ID: {response.OrderId}");
             Console.WriteLine("1. Cancel Order");
             Console.WriteLine("2. Edit Order");
 
             int userChoice;
-
             // Validate user input
             do
             {
@@ -48,54 +56,16 @@ class ProductClient
 
         }
 
-        private static JObject ReadFromItemList()
+        public static string RenderItemsAndBuyProduct(ListOfItems itemList)
         {
-            string jsonFilePath = "../ProductServiceClient/Model/itemsList.json";
-
-            string jsonContent = File.ReadAllText(jsonFilePath);
-
-            // Parse JSON
-            JArray productsArray = JArray.Parse(jsonContent);
-            Console.WriteLine("Choose a product:");
-
-            // Display a numbered list of products
-            for (int i = 0; i < productsArray.Count; i++)
+            Console.WriteLine("Choose any item from below. Select the ID to place the order!");
+            // Iterate through the items in the response
+            foreach (var item in itemList.Items)
             {
-                Console.WriteLine($"{i + 1}. {productsArray[i]["name"]} - ${productsArray[i]["price"]}");
+                Console.WriteLine($"Product ID: {item.Id}, Name: {item.Name}, Price: {item.Price}");
             }
 
-            int userChoice;
-
-            // Validate user input
-            do
-            {
-                Console.Write("Enter the number of your choice: ");
-
-                // Try to parse the user input as an integer
-                if (!int.TryParse(Console.ReadLine(), out userChoice) || userChoice < 1 || userChoice > productsArray.Count)
-                {
-                    Console.WriteLine("Invalid input. Please enter a valid number.");
-                }
-
-            } while (userChoice < 1 || userChoice > productsArray.Count);
-
-            // Adjust index since user input is 1-based, but array is 0-based
-            int chosenProductIndex = userChoice - 1;
-
-            // Get the chosen product
-            JObject chosenProduct = (JObject)productsArray[chosenProductIndex];
-
-            // Display the details of the chosen product
-            Console.WriteLine($"You have chosen: {chosenProduct["name"]} - ${chosenProduct["price"]}");
-            Console.WriteLine("Additional Details:");
-
-            productsArray.RemoveAt(chosenProductIndex);
-
-            // Update the JSON file with the modified array
-            File.WriteAllText(jsonFilePath, productsArray.ToString());
-
-            return chosenProduct;
-
+            return Console.ReadLine().ToString();
         }
 
     }

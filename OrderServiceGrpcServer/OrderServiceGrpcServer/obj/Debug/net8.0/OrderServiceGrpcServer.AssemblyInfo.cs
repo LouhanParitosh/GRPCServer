@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OrderServiceGrpcServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9988908a51e65902b55b953c68ba6e9ed1c275ca")]
 [assembly: System.Reflection.AssemblyProductAttribute("OrderServiceGrpcServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OrderServiceGrpcServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

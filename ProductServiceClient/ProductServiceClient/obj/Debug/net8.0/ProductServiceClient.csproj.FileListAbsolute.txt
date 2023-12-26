@@ -42,7 +42,6 @@ C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\ProductServiceClient\ProductS
 C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\ProductServiceClient\ProductServiceClient\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\ProductServiceClient\ProductServiceClient\bin\Debug\net8.0\appsettings.Development.json
 C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\ProductServiceClient\ProductServiceClient\bin\Debug\net8.0\appsettings.json
-C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\ProductServiceClient\ProductServiceClient\bin\Debug\net8.0\Model\itemsList.json
 C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\ProductServiceClient\ProductServiceClient\bin\Debug\net8.0\ProductServiceClient.exe
 C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\ProductServiceClient\ProductServiceClient\bin\Debug\net8.0\ProductServiceClient.deps.json
 C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\ProductServiceClient\ProductServiceClient\bin\Debug\net8.0\ProductServiceClient.runtimeconfig.json
@@ -82,3 +81,4 @@ C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\ProductServiceClie
 C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\ProductServiceClient\ProductServiceClient\obj\Debug\net8.0\ProductServiceClient.pdb
 C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\ProductServiceClient\ProductServiceClient\obj\Debug\net8.0\ProductServiceClient.genruntimeconfig.cache
 C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\ProductServiceClient\ProductServiceClient\obj\Debug\net8.0\ref\ProductServiceClient.dll
+C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\ProductServiceClient\ProductServiceClient\obj\Debug\net8.0\ProductServiceClient.sourcelink.json

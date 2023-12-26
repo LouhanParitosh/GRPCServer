@@ -1,4 +1,5 @@
-﻿using Grpc.Core;
+﻿using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 using Newtonsoft.Json.Linq;
 
 using static OrderServiceGrpcServer.OrderService;
@@ -31,6 +32,31 @@ namespace OrderServiceGrpcServer.Services
 
             return Task.FromResult(response);
         }
+
+        public override Task<ListOfItems> GetAllAvailableItems(Empty request, ServerCallContext context)
+        {
+            ListOfItems listOfItems = new ListOfItems();
+            string jsonFilePath = "../OrderServiceGrpcServer/Model/itemsList.json";
+            string jsonContent = File.ReadAllText(jsonFilePath);
+
+            // Parse JSON
+            JArray productsArray = JArray.Parse(jsonContent);
+
+            foreach (JToken productToken in productsArray)
+            {
+               Item item = new Item
+               {
+                   Id = productToken["id"].ToString(),
+                   Name = productToken["name"].ToString(),
+                   Price = (double)productToken["price"]
+               };
+
+                listOfItems.Items.Add(item);
+            }
+
+            return Task.FromResult(listOfItems);
+        }
+
 
         private void RemoveItemFromList(OrderRequest request)
         {
