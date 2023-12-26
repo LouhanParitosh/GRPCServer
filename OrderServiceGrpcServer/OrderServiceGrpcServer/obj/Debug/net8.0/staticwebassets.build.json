@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "lvpkL72BK9voOoTkP3sErisZLDZm3mn2t2s82Evhtn4=",
+  "Source": "OrderServiceGrpcServer",
+  "BasePath": "_content/OrderServiceGrpcServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

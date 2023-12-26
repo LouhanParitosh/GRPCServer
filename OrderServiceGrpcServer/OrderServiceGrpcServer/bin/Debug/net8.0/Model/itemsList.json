@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop",
+    "brand": "DEF",
+    "price": 1299.99,
+    "ram": "8GB",
+    "storage": "512GB SSD"
+  },
+  {
+    "id": 2,
+    "name": "LED TV",
+    "brand": "XYZ",
+    "price": 799.99,
+    "screenSize": 55,
+    "resolution": "4K"
+  },
+  {
+    "id": 4,
+    "name": "LED TV",
+    "brand": "XYZ",
+    "price": 799.99,
+    "screenSize": 55,
+    "resolution": "4K"
+  },
+  {
+    "id": 5,
+    "name": "Laptop",
+    "brand": "DEF",
+    "price": 1299.99,
+    "ram": "8GB",
+    "storage": "512GB SSD"
+  },
+  {
+    "id": 6,
+    "name": "LED TV",
+    "brand": "XYZ",
+    "price": 799.99,
+    "screenSize": 55,
+    "resolution": "4K"
+  }
+]

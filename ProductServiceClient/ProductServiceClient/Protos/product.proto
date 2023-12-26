@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "ProductClient";
+
+service OrderService {
+    rpc PlaceOrder (OrderRequest) returns (OrderResponse);
+    rpc UpdateOrder (OrderRequest) returns (OrderResponse);
+}
+
+message OrderRequest {
+    string productId = 1;
+    string color = 2;
+    string description = 3;
+    double price = 4;
+}
+
+message OrderResponse {
+    string orderId = 1;
+    string status = 2;
+}
+

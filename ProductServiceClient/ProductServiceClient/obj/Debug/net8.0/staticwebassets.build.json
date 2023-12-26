@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "CRRgKfgLmKGEwgDuHVA6fJE7NrtfcEgKV49f5cBn92Q=",
+  "Source": "ProductServiceClient",
+  "BasePath": "_content/ProductServiceClient",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "id": 6,
+    "name": "LED TV",
+    "brand": "XYZ",
+    "price": 799.99,
+    "screenSize": 55,
+    "resolution": "4K"
+  }
+]
