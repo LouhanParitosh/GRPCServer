@@ -3,13 +3,13 @@
     "id": 207,
     "name": "Smartphone",
     "brand": "ABC",
-    "price": 599.00
+    "price": 599.0
   },
   {
     "id": 304,
     "name": "Laptop",
     "brand": "DEF",
-    "price": 899.50
+    "price": 899.5
   },
   {
     "id": 152,
@@ -30,16 +30,10 @@
     "price": 74.25
   },
   {
-    "id": 809,
-    "name": "Wireless Mouse",
-    "brand": "PQR",
-    "price": 27.50
-  },
-  {
     "id": 521,
     "name": "Backpack",
     "brand": "STU",
-    "price": 38.20
+    "price": 38.2
   },
   {
     "id": 937,
@@ -57,7 +51,7 @@
     "id": 382,
     "name": "Robot Vacuum",
     "brand": "BCD",
-    "price": 199.50
+    "price": 199.5
   },
   {
     "id": 148,
