@@ -82,3 +82,4 @@ C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\OrderServiceGrpcSe
 C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\OrderServiceGrpcServer\OrderServiceGrpcServer\obj\Debug\net8.0\ref\OrderServiceGrpcServer.dll
 C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\OrderServiceGrpcServer\OrderServiceGrpcServer\bin\Debug\net8.0\Model\itemsList.json
 C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\OrderServiceGrpcServer\OrderServiceGrpcServer\obj\Debug\net8.0\OrderServiceGrpcServer.sourcelink.json
+C:\Personal\Thinkpad to dell\NAGP\Middleware\Final\GRPCServer\OrderServiceGrpcServer\OrderServiceGrpcServer\bin\Debug\net8.0\RabbitMQ.Client.dll

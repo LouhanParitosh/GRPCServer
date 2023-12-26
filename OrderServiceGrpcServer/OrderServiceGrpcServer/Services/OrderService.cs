@@ -1,6 +1,10 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Newtonsoft.Json.Linq;
+using RabbitMQ.Client.Events;
+using RabbitMQ.Client;
+using System;
+using System.Text;
 
 using static OrderServiceGrpcServer.OrderService;
 
@@ -8,6 +12,13 @@ namespace OrderServiceGrpcServer.Services
 {
     public class OrderServiceInstance : OrderServiceBase
     {
+
+        /// <summary>
+        /// Place Order feature
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public override Task<OrderResponse> PlaceOrder(OrderRequest request, ServerCallContext context)
         {
             RemoveItemFromList(request);
@@ -19,9 +30,17 @@ namespace OrderServiceGrpcServer.Services
                 Status = "Order Placed Successfully"
             };
 
+            PublishEventOfOrderCreation(response);
+
             return Task.FromResult(response);
         }
 
+        /// <summary>
+        /// Update Order Feature
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public override Task<OrderResponse> UpdateOrder(OrderRequest request, ServerCallContext context)
         {
             var response = new OrderResponse
@@ -29,6 +48,8 @@ namespace OrderServiceGrpcServer.Services
                 OrderId = request.OrderId,
                 Status = request.ProductId.Equals("1") ? "Order Cancelled Successfully" : "Order Updated Successfully"
             };
+
+            PublishEventOfOrderUpdation(response);
 
             return Task.FromResult(response);
         }
@@ -77,6 +98,59 @@ namespace OrderServiceGrpcServer.Services
 
             // Update the JSON file with the modified array
             File.WriteAllText(jsonFilePath, productsArray.ToString());
+        }
+
+        public void PublishEventOfOrderCreation(OrderResponse orderResponse)
+        {
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+            using var connection = factory.CreateConnection();
+            using var channel = connection.CreateModel();
+
+            // Declare a Fanout Exchange
+            channel.ExchangeDeclare(exchange: "fanout_exchange", type: ExchangeType.Fanout);
+
+
+            string message = "Order Number: " + orderResponse.OrderId + " is Created!";
+
+            var body = Encoding.UTF8.GetBytes(message);
+
+            // Publish to the Fanout Exchange
+            channel.BasicPublish(exchange: "fanout_exchange",
+                                    routingKey: "",
+                                    basicProperties: null,
+                                    body: body);
+
+            Console.WriteLine($"Sent: {message}");
+        }
+
+        public void PublishEventOfOrderUpdation(OrderResponse orderResponse)
+        {
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+            using var connection = factory.CreateConnection();
+            using var channel = connection.CreateModel();
+
+            // Declare a Topic Exchange
+            channel.ExchangeDeclare(exchange: "topic_exchange", type: ExchangeType.Topic);
+
+            string message = "system." + orderResponse.OrderId + " is updated successfully";
+
+            var body = Encoding.UTF8.GetBytes(message);
+
+            // Publish to the Topic Exchange with a routing key
+            channel.BasicPublish(exchange: "topic_exchange",
+                                    routingKey: GetRoutingKey(message),
+                                    basicProperties: null,
+                                    body: body);
+
+            Console.WriteLine($"Sent: {message}");
+
+        }
+
+        string GetRoutingKey(string message)
+        {
+            // Extract routing key from the message (e.g., the first part before the dot)
+            var parts = message.Split('.');
+            return parts.Length > 0 ? parts[0] : "";
         }
     }
 }

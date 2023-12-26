@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "+D/35/MAQMGFWV1fW/qtUofERYK7BDQrxWjz+SMVVDaAC0NslrSpY72VlrVwtmgJozBLFYkSj2EP1cQ/eboPyg==",
+  "success": true,
+  "projectFilePath": "C:\\Personal\\Thinkpad to dell\\NAGP\\Middleware\\Final\\GRPCServer\\OrderServiceGrpcServer\\NotificationService2\\NotificationService2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\paritoshlouhan\\.nuget\\packages\\rabbitmq.client\\6.8.1\\rabbitmq.client.6.8.1.nupkg.sha512",
+    "C:\\Users\\paritoshlouhan\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\paritoshlouhan\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

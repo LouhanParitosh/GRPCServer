@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xKC+RND5AxzR5XIh3NICKhn4gRX/E18TZ4ENp8ZTe+C02tLCL35o2AuT8D+mOLCjrreAPdEJVwvUxzPIuP+inw==",
+  "dgSpecHash": "4vQ7m5TPNbaxIwcOYR7ZB2HhmP5hPofxUJ3+CeoZS2w+q0XIVE9jO2dG9wTZuTTMXZ3ghsFO/84eu3ChxPhLew==",
   "success": true,
   "projectFilePath": "C:\\Personal\\Thinkpad to dell\\NAGP\\Middleware\\Final\\GRPCServer\\OrderServiceGrpcServer\\OrderServiceGrpcServer\\OrderServiceGrpcServer.csproj",
   "expectedPackageFiles": [
@@ -23,9 +23,11 @@
     "C:\\Users\\paritoshlouhan\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\paritoshlouhan\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\paritoshlouhan\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\paritoshlouhan\\.nuget\\packages\\rabbitmq.client\\6.8.1\\rabbitmq.client.6.8.1.nupkg.sha512",
     "C:\\Users\\paritoshlouhan\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
-    "C:\\Users\\paritoshlouhan\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\paritoshlouhan\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\paritoshlouhan\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\paritoshlouhan\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\paritoshlouhan\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512"
   ],
   "logs": []
 }

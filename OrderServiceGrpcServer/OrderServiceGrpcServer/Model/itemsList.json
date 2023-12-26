@@ -9,14 +9,6 @@
   },
   {
     "id": 2,
-    "name": "LED TV",
-    "brand": "XYZ",
-    "price": 799.99,
-    "screenSize": 55,
-    "resolution": "4K"
-  },
-  {
-    "id": 3,
     "name": "Laptop",
     "brand": "DEF",
     "price": 1299.99,
@@ -46,5 +38,21 @@
     "price": 1299.99,
     "ram": "8GB",
     "storage": "512GB SSD"
+  },
+  {
+    "id": 7,
+    "name": "LED TV",
+    "brand": "XYZ",
+    "price": 799.99,
+    "screenSize": 55,
+    "resolution": "4K"
+  },
+  {
+    "id": 8,
+    "name": "LED TV",
+    "brand": "XYZ",
+    "price": 799.99,
+    "screenSize": 55,
+    "resolution": "4K"
   }
 ]
