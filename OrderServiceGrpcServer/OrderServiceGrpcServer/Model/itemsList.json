@@ -1,58 +1,74 @@
 [
   {
-    "id": 1,
-    "name": "LED TV",
-    "brand": "XYZ",
-    "price": 799.99,
-    "screenSize": 55,
-    "resolution": "4K"
+    "id": 207,
+    "name": "Smartphone",
+    "brand": "ABC",
+    "price": 599.0
   },
   {
-    "id": 2,
+    "id": 304,
     "name": "Laptop",
     "brand": "DEF",
-    "price": 1299.99,
-    "ram": "8GB",
-    "storage": "512GB SSD"
+    "price": 899.5
   },
   {
-    "id": 4,
-    "name": "LED TV",
-    "brand": "XYZ",
-    "price": 799.99,
-    "screenSize": 55,
-    "resolution": "4K"
+    "id": 152,
+    "name": "Coffee Maker",
+    "brand": "GHI",
+    "price": 45.75
   },
   {
-    "id": 5,
-    "name": "LED TV",
-    "brand": "XYZ",
-    "price": 799.99,
-    "screenSize": 55,
-    "resolution": "4K"
+    "id": 418,
+    "name": "Bluetooth Headphones",
+    "brand": "JKL",
+    "price": 119.99
   },
   {
-    "id": 6,
-    "name": "Laptop",
-    "brand": "DEF",
-    "price": 1299.99,
-    "ram": "8GB",
-    "storage": "512GB SSD"
+    "id": 623,
+    "name": "Fitness Tracker",
+    "brand": "MNO",
+    "price": 74.25
   },
   {
-    "id": 7,
-    "name": "LED TV",
-    "brand": "XYZ",
-    "price": 799.99,
-    "screenSize": 55,
-    "resolution": "4K"
+    "id": 521,
+    "name": "Backpack",
+    "brand": "STU",
+    "price": 38.2
   },
   {
-    "id": 8,
-    "name": "LED TV",
-    "brand": "XYZ",
-    "price": 799.99,
-    "screenSize": 55,
-    "resolution": "4K"
+    "id": 937,
+    "name": "Smart Thermostat",
+    "brand": "VWX",
+    "price": 155.75
+  },
+  {
+    "id": 765,
+    "name": "Gaming Console",
+    "brand": "YZA",
+    "price": 299.99
+  },
+  {
+    "id": 382,
+    "name": "Robot Vacuum",
+    "brand": "BCD",
+    "price": 199.5
+  },
+  {
+    "id": 148,
+    "name": "Digital Camera",
+    "brand": "EFG",
+    "price": 449.99
+  },
+  {
+    "id": 925,
+    "name": "External Hard Drive",
+    "brand": "HIJ",
+    "price": 89.75
+  },
+  {
+    "id": 633,
+    "name": "Wireless Keyboard",
+    "brand": "KLM",
+    "price": 64.99
   }
 ]

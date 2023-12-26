@@ -94,7 +94,7 @@ namespace OrderServiceGrpcServer.Services
             // Adjust index since user input is 1-based, but array is 0-based
             int chosenProductIndex = userChoice - 1;
 
-            productsArray.RemoveAt(chosenProductIndex);
+            productsArray.Remove(productToRemove);
 
             // Update the JSON file with the modified array
             File.WriteAllText(jsonFilePath, productsArray.ToString());
@@ -110,7 +110,7 @@ namespace OrderServiceGrpcServer.Services
             channel.ExchangeDeclare(exchange: "fanout_exchange", type: ExchangeType.Fanout);
 
 
-            string message = "Order Number: " + orderResponse.OrderId + " is Created!";
+            string message = orderResponse.Status;
 
             var body = Encoding.UTF8.GetBytes(message);
 
@@ -132,25 +132,18 @@ namespace OrderServiceGrpcServer.Services
             // Declare a Topic Exchange
             channel.ExchangeDeclare(exchange: "topic_exchange", type: ExchangeType.Topic);
 
-            string message = "system." + orderResponse.OrderId + " is updated successfully";
+            string message = orderResponse.Status;
 
             var body = Encoding.UTF8.GetBytes(message);
 
             // Publish to the Topic Exchange with a routing key
             channel.BasicPublish(exchange: "topic_exchange",
-                                    routingKey: GetRoutingKey(message),
+                                    routingKey: "#",
                                     basicProperties: null,
                                     body: body);
 
             Console.WriteLine($"Sent: {message}");
 
-        }
-
-        string GetRoutingKey(string message)
-        {
-            // Extract routing key from the message (e.g., the first part before the dot)
-            var parts = message.Split('.');
-            return parts.Length > 0 ? parts[0] : "";
         }
     }
 }

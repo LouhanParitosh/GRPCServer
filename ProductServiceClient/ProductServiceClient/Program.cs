@@ -1,17 +1,15 @@
-using Grpc.Net.Client;
-using Grpc.Net.Client;
 using Google.Protobuf.WellKnownTypes;
-using Grpc.Net.Client.Configuration;
-using Newtonsoft.Json.Linq;
-using System.Net;
+using Grpc.Net.Client;
 
-namespace ProductClient.Services {
+namespace ProductClient.Services
+{
 
-class ProductClient
+    class ProductClient
 {
         static async Task Main(string[] args)
         {
-            //Place Order Call
+
+            //Creating a gRPC Client
             using var channel = GrpcChannel.ForAddress("http://localhost:50051");
             var client = new OrderService.OrderServiceClient(channel);
 
@@ -26,43 +24,34 @@ class ProductClient
             {
                 ProductId = userResponse
             };
-            OrderResponse placeOrderResponse = await client.PlaceOrderAsync(placeorderrequest);
+            var placeOrderResponse = await client.PlaceOrderAsync(placeorderrequest);
             Console.Write(placeOrderResponse.ToString());
             Console.ReadLine();
+
 
 
             //Providing user option to update/Cancel the order
             Console.WriteLine("What do you want to do with this order?" + $"Order ID: {placeOrderResponse.OrderId}");
             Console.WriteLine("1. Cancel Order");
             Console.WriteLine("2. Edit Order");
-
-            int userChoice;
-            // Validate user input
-            do
-            {
-                Console.Write("Enter the number of your choice: ");
-
-                // Try to parse the user input as an integer
-                if (!int.TryParse(Console.ReadLine(), out userChoice) || (userChoice != 1 && userChoice != 2))
-                {
-                    Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                }
-
-            } while (userChoice != 1 && userChoice != 2);
+            var userChoice = Console.ReadLine();
 
             var updateorderrequest = new OrderRequest()
             {
-                ProductId = userChoice.ToString(),
+                ProductId = userChoice,
                 OrderId = placeOrderResponse.OrderId
             };
-
-
             OrderResponse updateOrderResponse = await client.UpdateOrderAsync(updateorderrequest);
             Console.WriteLine(updateOrderResponse.ToString());
             Console.ReadLine();
 
         }
 
+        /// <summary>
+        /// Render the list of available items
+        /// </summary>
+        /// <param name="itemList"></param>
+        /// <returns></returns>
         public static string RenderItemsAndBuyProduct(ListOfItems itemList)
         {
             Console.WriteLine("Choose any item from below. Select the ID to place the order!");
@@ -72,7 +61,7 @@ class ProductClient
                 Console.WriteLine($"Product ID: {item.Id}, Name: {item.Name}, Price: {item.Price}");
             }
 
-            return Console.ReadLine().ToString();
+            return Console.ReadLine();
         }
 
     }
