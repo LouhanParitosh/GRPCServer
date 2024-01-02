@@ -13,13 +13,11 @@ namespace NotificationService1
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
 
-            // Declare a Fanout Exchange
+            // Declaring a Fanout Exchange
             channel.ExchangeDeclare(exchange: "fanout_exchange", type: ExchangeType.Fanout);
-
-            // Declare a non-durable, exclusive, auto-delete queue with a generated name
             var queueName = channel.QueueDeclare().QueueName;
 
-            // Bind the queue to the Fanout Exchange
+            // Binding the queu to the Fanout Exchange
             channel.QueueBind(queue: queueName,
                               exchange: "fanout_exchange",
                               routingKey: "");
@@ -32,7 +30,7 @@ namespace NotificationService1
                 Console.WriteLine($"Received: {message}");
             };
 
-            // Start consuming messages from the queue
+            // Consuming all messages from the queue
             channel.BasicConsume(queue: queueName,
                                  autoAck: true,
                                  consumer: consumer);

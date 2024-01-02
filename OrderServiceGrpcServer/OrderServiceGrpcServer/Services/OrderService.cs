@@ -1,9 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Newtonsoft.Json.Linq;
-using RabbitMQ.Client.Events;
 using RabbitMQ.Client;
-using System;
 using System.Text;
 
 using static OrderServiceGrpcServer.OrderService;
@@ -79,24 +77,26 @@ namespace OrderServiceGrpcServer.Services
         }
 
 
+        /// <summary>
+        /// Removing item from the JSON
+        /// </summary>
+        /// <param name="request"></param>
         private void RemoveItemFromList(OrderRequest request)
         {
             string jsonFilePath = "../OrderServiceGrpcServer/Model/itemsList.json";
             string jsonContent = File.ReadAllText(jsonFilePath);
 
-            // Parse JSON
+            // Parsing JSON
             JArray productsArray = JArray.Parse(jsonContent);
 
             int userChoice = Convert.ToInt32(request.ProductId);
 
             JToken productToRemove = productsArray.FirstOrDefault(p => (int)p["id"] == userChoice);
-
-            // Adjust index since user input is 1-based, but array is 0-based
             int chosenProductIndex = userChoice - 1;
 
             productsArray.Remove(productToRemove);
 
-            // Update the JSON file with the modified array
+            // Updating the JSON file with the modified array
             File.WriteAllText(jsonFilePath, productsArray.ToString());
         }
 
@@ -106,7 +106,7 @@ namespace OrderServiceGrpcServer.Services
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
 
-            // Declare a Fanout Exchange
+            // Declaring a Fanout Exchange
             channel.ExchangeDeclare(exchange: "fanout_exchange", type: ExchangeType.Fanout);
 
 
@@ -114,7 +114,7 @@ namespace OrderServiceGrpcServer.Services
 
             var body = Encoding.UTF8.GetBytes(message);
 
-            // Publish to the Fanout Exchange
+            // Publishing to the Fanout Exchange
             channel.BasicPublish(exchange: "fanout_exchange",
                                     routingKey: "",
                                     basicProperties: null,
@@ -129,14 +129,14 @@ namespace OrderServiceGrpcServer.Services
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
 
-            // Declare a Topic Exchange
+            // Declaring a Topic Exchange
             channel.ExchangeDeclare(exchange: "topic_exchange", type: ExchangeType.Topic);
 
             string message = orderResponse.Status;
 
             var body = Encoding.UTF8.GetBytes(message);
 
-            // Publish to the Topic Exchange with a routing key
+            // Publishing to the Topic Exchange
             channel.BasicPublish(exchange: "topic_exchange",
                                     routingKey: "#",
                                     basicProperties: null,

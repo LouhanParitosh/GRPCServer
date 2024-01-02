@@ -13,29 +13,25 @@ namespace NotificationService2
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
 
-            // Declare a Fanout Exchange
+            //Declaring a Fanout Exchange
             channel.ExchangeDeclare(exchange: "fanout_exchange", type: ExchangeType.Fanout);
 
-            // Declare a Topic Exchange
+            // Declaring a Topic Exchange
             channel.ExchangeDeclare(exchange: "topic_exchange", type: ExchangeType.Topic);
-
-            // Create a non-durable, exclusive, auto-delete queue for the Fanout Exchange
             var fanoutQueueName = channel.QueueDeclare().QueueName;
 
-            // Bind the queue to the Fanout Exchange
+            // Binding the queue to the Fanout Exchange
             channel.QueueBind(queue: fanoutQueueName,
                               exchange: "fanout_exchange",
                               routingKey: "");
 
-            // Create a non-durable, exclusive, auto-delete queue for the Topic Exchange
             var topicQueueName = channel.QueueDeclare().QueueName;
 
-            // Use "#" as the routing key to match all messages in the Topic Exchange
             channel.QueueBind(queue: topicQueueName,
                               exchange: "topic_exchange",
                               routingKey: "#");
 
-            // Create a consumer for the Fanout Exchange
+            // Creating a consumer for the Fanout Exchange
             var fanoutConsumer = new EventingBasicConsumer(channel);
             fanoutConsumer.Received += (model, ea) =>
             {
@@ -44,7 +40,6 @@ namespace NotificationService2
                 Console.WriteLine($"Received from Fanout Exchange: {message}");
             };
 
-            // Create a consumer for the Topic Exchange
             var topicConsumer = new EventingBasicConsumer(channel);
             topicConsumer.Received += (model, ea) =>
             {
@@ -53,12 +48,12 @@ namespace NotificationService2
                 Console.WriteLine($"Received from Topic Exchange: {message}");
             };
 
-            // Start consuming messages from the Fanout Exchange
+            // Consuming messages from the Fanout Exchange
             channel.BasicConsume(queue: fanoutQueueName,
                                  autoAck: true,
                                  consumer: fanoutConsumer);
 
-            // Start consuming messages from the Topic Exchange
+            // Consuming messages from the Topic Exchange
             channel.BasicConsume(queue: topicQueueName,
                                  autoAck: true,
                                  consumer: topicConsumer);

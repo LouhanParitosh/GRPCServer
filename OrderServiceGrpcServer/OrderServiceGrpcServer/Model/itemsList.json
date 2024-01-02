@@ -1,11 +1,5 @@
 [
   {
-    "id": 207,
-    "name": "Smartphone",
-    "brand": "ABC",
-    "price": 599.0
-  },
-  {
     "id": 304,
     "name": "Laptop",
     "brand": "DEF",
@@ -22,12 +16,6 @@
     "name": "Fitness Tracker",
     "brand": "MNO",
     "price": 74.25
-  },
-  {
-    "id": 521,
-    "name": "Backpack",
-    "brand": "STU",
-    "price": 38.2
   },
   {
     "id": 937,
